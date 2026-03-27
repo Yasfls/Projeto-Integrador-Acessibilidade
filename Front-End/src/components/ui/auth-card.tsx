@@ -8,13 +8,17 @@ interface AuthCardProps {
 
 export default function AuthCard({ children, className }: AuthCardProps) {
   return (
-    <div className="min-h-screen bg-gradient-main flex items-center justify-center px-4">
+    <main 
+      id="conteudo-principal" 
+      tabIndex={-1} 
+      className="min-h-screen bg-gradient-main flex items-center justify-center px-4 focus:outline-none"
+    >
       <Card className={cn("w-full max-w-md shadow-card", className)}>
         <CardHeader className="space-y-1">
           {children}
         </CardHeader>
       </Card>
-    </div>
+    </main>
   );
 }
 

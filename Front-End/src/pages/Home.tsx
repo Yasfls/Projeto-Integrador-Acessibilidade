@@ -26,7 +26,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Header/>
 
-      <main className="flex-1">
+      <main id="conteudo-principal" tabIndex={-1} className="flex-1 focus:outline-none">
         <section className="container mx-auto px-4 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">

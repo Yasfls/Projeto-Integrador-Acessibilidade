@@ -14,19 +14,20 @@ import ComoFunciona from "./pages/ComoFunciona";
 import NotFound from "./pages/NotFound";
 import { AccessibilityProvider } from './contexts/AccessibilityContext';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
+import { SkipLink } from "./components/SkipLink"; 
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    {/* Envolvendo a aplicação com o Provider de Acessibilidade */}
     <AccessibilityProvider>
       <TooltipProvider delayDuration={200}>
         <Toaster />
         <Sonner />
         
-        {/* Renderizando o Menu flutuante para que ele apareça em todas as telas */}
         <AccessibilityMenu />
+
+        <SkipLink />
 
         <BrowserRouter>
           <Routes>

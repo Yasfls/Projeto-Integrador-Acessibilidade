@@ -9,7 +9,7 @@ export default function SobreOProjeto() {
     <div className="min-h-screen flex flex-col">
       <Header/>
       
-      <main className="flex-1 container mx-auto px-4 py-16">
+      <main id="conteudo-principal" tabIndex={-1} className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-primary mb-4">
             Sobre o Projeto
