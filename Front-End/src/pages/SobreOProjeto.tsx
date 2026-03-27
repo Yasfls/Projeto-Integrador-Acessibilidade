@@ -40,11 +40,11 @@ export default function SobreOProjeto() {
                   para encontrar profissionais qualificados, especialmente na 
                   área educacional, limitando seu impacto social.
                 </p>
-                <img 
-                  src="https://observatorio3setor.org.br/wp-content/uploads/2019/08/voluntariado.jpg" 
-                  alt="Mãos unidas em sinal de voluntariado"
-                  className="w-full h-32 object-cover rounded-md mt-auto shrink-0"
-                />
+              <img 
+                src="https://observatorio3setor.org.br/wp-content/uploads/2019/08/voluntariado.jpg" 
+                alt="Várias mãos sobrepostas no centro de uma roda, simbolizando união e trabalho em equipa"
+                className="w-full h-32 object-cover rounded-md mt-auto shrink-0"
+              />
               </CardContent>
             </Card>
 
@@ -64,7 +64,7 @@ export default function SobreOProjeto() {
                 </p>
                 <img 
                   src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop" 
-                  alt="Crianças em uma sala de aula"
+                  alt="Grupo de crianças atentas a estudar sentadas numa sala de aula"
                   className="w-full h-32 object-cover rounded-md mt-auto shrink-0"
                 />
               </CardContent>
@@ -86,7 +86,7 @@ export default function SobreOProjeto() {
                 </p>
                 <img 
                   src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop" 
-                  alt="Pessoas colaborando em um projeto"
+                  alt="Equipe de pessoas a trabalhar e a conversar em redor de uma mesa de escritório com notebooks e papéis"
                   className="w-full h-32 object-cover rounded-md mt-auto shrink-0"
                 />
               </CardContent>

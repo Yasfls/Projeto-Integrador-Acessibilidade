@@ -111,11 +111,11 @@ export default function ComoFunciona() {
             </div>
             
             <div className="flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=400&fit=crop" 
-                alt="Pessoas colaborando em um projeto"
-                className="max-w-full h-auto rounded-lg shadow-card"
-              />
+            <img 
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=400&fit=crop" 
+              alt="Grupo de estudantes ou profissionais a sorrir e a cumprimentarem-se enquanto trabalham num computador portátil"
+              className="max-w-full h-auto rounded-lg shadow-card"
+            />
             </div>
           </div>
         </div>

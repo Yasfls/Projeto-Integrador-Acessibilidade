@@ -11,6 +11,7 @@ interface ONG {
   description: string;
   tag: string;
   image: string;
+  altText: string; 
 }
 
 const ongRaizes: ONG = {
@@ -18,7 +19,8 @@ const ongRaizes: ONG = {
   name: "ONG Raízes",
   description: "Desenvolve projetos educacionais sustentáveis com foco na preservação ambiental e educação para a cidadania.",
   tag: "Sustentabilidade",
-  image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop"
+  image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop",
+  altText: "Pessoas a debater ideias numa mesa de trabalho, representando o planeamento sustentável da ONG" // Adicionamos esta linha
 };
 
 export default function OngsParceiras() {
@@ -51,7 +53,7 @@ export default function OngsParceiras() {
               </Badge>
               <img
                 src={ongRaizes.image}
-                alt={`Imagem representativa da ${ongRaizes.name}`}
+                alt={ongRaizes.altText}
                 className="w-full h-48 object-cover rounded-md"
               />
             </CardHeader>
@@ -85,7 +87,7 @@ export default function OngsParceiras() {
               conosco para saber mais sobre as oportunidades.
             </p>
             <a
-              href="https://wa.me/5547999999999" // <-- Substitua pelo seu número de WhatsApp
+              href="https://wa.me/5547999999999" 
               target="_blank"
               rel="noopener noreferrer"
             >
