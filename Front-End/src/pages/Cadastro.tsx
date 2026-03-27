@@ -80,7 +80,7 @@ export default function Cadastro() {
            <div className="space-y-2">
             <Label htmlFor="fullName">Nome Completo</Label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <User aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="fullName"
                 type="text"
@@ -89,7 +89,8 @@ export default function Cadastro() {
                 onChange={(e) => setFullName(e.target.value)}
                 className="pl-10"
                 required
-                disabled={isLoading} // Desabilita durante o loading
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -97,7 +98,7 @@ export default function Cadastro() {
           <div className="space-y-2">
             <Label htmlFor="areaOfExpertise">Sua Área de Atuação</Label>
             <div className="relative">
-              <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Briefcase aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="areaOfExpertise"
                 type="text"
@@ -106,7 +107,8 @@ export default function Cadastro() {
                 onChange={(e) => setAreaOfExpertise(e.target.value)}
                 className="pl-10"
                 required
-                disabled={isLoading} // Desabilita durante o loading
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -114,7 +116,7 @@ export default function Cadastro() {
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Mail aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="email"
                 type="email"
@@ -123,7 +125,8 @@ export default function Cadastro() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10"
                 required
-                disabled={isLoading} // Desabilita durante o loading
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -131,7 +134,7 @@ export default function Cadastro() {
           <div className="space-y-2">
             <Label htmlFor="password">Senha</Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="password"
                 type="password"
@@ -140,7 +143,8 @@ export default function Cadastro() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="pl-10"
                 required
-                disabled={isLoading} // Desabilita durante o loading
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -148,7 +152,7 @@ export default function Cadastro() {
           <div className="space-y-2">
             <Label htmlFor="confirmPassword">Confirmar Senha</Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="confirmPassword"
                 type="password"
@@ -157,12 +161,18 @@ export default function Cadastro() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="pl-10"
                 required
-                disabled={isLoading} // Desabilita durante o loading
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
           
-          <Button type="submit" className="w-full bg-primary hover:bg-primary-hover" disabled={isLoading}>
+          <Button 
+            type="submit" 
+            className="w-full bg-primary hover:bg-primary-hover" 
+            disabled={isLoading}
+            aria-live="polite"
+          >
             {isLoading ? "Criando conta..." : "Criar Conta"}
           </Button>
           

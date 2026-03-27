@@ -106,84 +106,88 @@ export default function CadastroOng() {
       </CardTitle>
       
       <AuthCardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* O seu JSX (a parte visual do formulário) não precisa de nenhuma alteração */}
+<form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="nomeDaOng">Nome da ONG</Label>
             <div className="relative">
-              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="nomeDaOng" type="text" placeholder="Insira o nome da organização..." value={nomeDaOng} onChange={(e) => setNomeDaOng(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Building2 aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="nomeDaOng" type="text" placeholder="Insira o nome da organização..." value={nomeDaOng} onChange={(e) => setNomeDaOng(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="cnpj">CNPJ</Label>
             <div className="relative">
-              <FileText className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="cnpj" type="text" placeholder="00.000.000/0000-00" value={cnpj} onChange={(e) => setCnpj(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <FileText aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="cnpj" type="text" placeholder="00.000.000/0000-00" value={cnpj} onChange={(e) => setCnpj(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="areaDeAtuacao">Área de Atuação</Label>
             <div className="relative">
-              <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="areaDeAtuacao" type="text" placeholder="Ex: Saúde, Educação, Meio Ambiente..." value={areaDeAtuacao} onChange={(e) => setAreaDeAtuacao(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Briefcase aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="areaDeAtuacao" type="text" placeholder="Ex: Saúde, Educação, Meio Ambiente..." value={areaDeAtuacao} onChange={(e) => setAreaDeAtuacao(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
 
            <div className="space-y-2">
             <Label htmlFor="telefone">Telefone de Contato</Label>
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="telefone" type="tel" placeholder="(00) 00000-0000" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Phone aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="telefone" type="tel" placeholder="(00) 00000-0000" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
 
            <div className="space-y-2">
             <Label htmlFor="logradouro">Endereço</Label>
             <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="logradouro" type="text" placeholder="Rua, Avenida, etc..." value={logradouro} onChange={(e) => setLogradouro(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <MapPin aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="logradouro" type="text" placeholder="Rua, Avenida, etc..." value={logradouro} onChange={(e) => setLogradouro(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
           <div className="flex gap-4">
             <div className="space-y-2 w-full">
               <Label htmlFor="cidade">Cidade</Label>
-              <Input id="cidade" type="text" placeholder="Sua cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} required disabled={isLoading} />
+              <Input id="cidade" type="text" placeholder="Sua cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} required aria-required="true" disabled={isLoading} />
             </div>
             <div className="space-y-2 w-1/3">
               <Label htmlFor="estado">Estado</Label>
-              <Input id="estado" type="text" placeholder="UF" maxLength={2} value={estado} onChange={(e) => setEstado(e.target.value)} required disabled={isLoading} />
+              <Input id="estado" type="text" placeholder="UF" maxLength={2} value={estado} onChange={(e) => setEstado(e.target.value)} required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="email">Email de Acesso</Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="email" type="email" placeholder="Insira o email de acesso..." value={email} onChange={(e) => setEmail(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Mail aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="email" type="email" placeholder="Insira o email de acesso..." value={email} onChange={(e) => setEmail(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="password">Senha</Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="password" type="password" placeholder="Crie uma senha forte..." value={password} onChange={(e) => setPassword(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="password" type="password" placeholder="Crie uma senha forte..." value={password} onChange={(e) => setPassword(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="confirmPassword">Confirmar Senha</Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="confirmPassword" type="password" placeholder="Confirme sua senha..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="pl-10" required disabled={isLoading} />
+              <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input id="confirmPassword" type="password" placeholder="Confirme sua senha..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
             </div>
           </div>
           
-          <Button type="submit" className="w-full bg-primary hover:bg-primary-hover" disabled={isLoading}>
+          <Button 
+            type="submit" 
+            className="w-full bg-primary hover:bg-primary-hover" 
+            disabled={isLoading}
+            aria-live="polite"
+          >
             {isLoading ? "Validando CNPJ e cadastrando..." : "Cadastrar ONG"}
           </Button>
           

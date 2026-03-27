@@ -17,10 +17,15 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [fontSizePercentage, setFontSizePercentage] = useState(100);
   const [daltonismMode, setDaltonismMode] = useState<DaltonismMode>('none');
 
-  // Aplica apenas o tamanho da fonte no elemento raiz (HTML)
-  useEffect(() => {
-    document.documentElement.style.fontSize = `${fontSizePercentage}%`;
-  }, [fontSizePercentage]);
+useEffect(() => {
+  const root = window.document.documentElement;
+  
+  if (daltonismMode === 'high-contrast') {
+    root.classList.add('high-contrast-mode');
+  } else {
+    root.classList.remove('high-contrast-mode');
+  }
+}, [daltonismMode]);
 
   // Funções para controle de zoom
   const increaseFontSize = () => setFontSizePercentage((prev) => Math.min(prev + 10, 150));
@@ -38,14 +43,7 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
         setDaltonismMode,
       }}
     >
-      {/* O conteúdo do seu site inteiro vai aparecer aqui dentro */}
       {children}
-
-      {/* A MÁGICA DOS FILTROS SEM QUEBRAR O BOTÃO:
-        Essas divs criam uma "lente" invisível por cima do site que altera a cor de 
-        tudo o que está atrás delas, garantindo que elementos "fixed" como o botão 
-        continuem estáticos no mesmo lugar.
-      */}
       {daltonismMode === 'grayscale' && (
         <div className="fixed inset-0 z-[10000] pointer-events-none backdrop-grayscale" />
       )}

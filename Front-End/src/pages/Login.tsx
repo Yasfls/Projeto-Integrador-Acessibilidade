@@ -12,13 +12,18 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
+  
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simular login bem-sucedido
-    localStorage.setItem("isAuthenticated", "true");
-    navigate("/");
+    setIsLoading(true); 
+
+    setTimeout(() => {
+      localStorage.setItem("isAuthenticated", "true");
+      navigate("/");
+    }, 1000);
   };
 
   return (
@@ -32,7 +37,7 @@ export default function Login() {
           <div className="space-y-2">
             <Label htmlFor="email">Usuário</Label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <User aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="email"
                 type="email"
@@ -41,6 +46,8 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10"
                 required
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -48,7 +55,7 @@ export default function Login() {
           <div className="space-y-2">
             <Label htmlFor="password">Senha</Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 id="password"
                 type="password"
@@ -57,6 +64,8 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="pl-10"
                 required
+                aria-required="true"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -66,6 +75,7 @@ export default function Login() {
               id="remember"
               checked={rememberMe}
               onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+              disabled={isLoading}
             />
             <Label
               htmlFor="remember"
@@ -75,14 +85,19 @@ export default function Login() {
             </Label>
           </div>
           
-          <Button type="submit" className="w-full bg-primary hover:bg-primary-hover">
-            Avançar
+          <Button 
+            type="submit" 
+            className="w-full bg-primary hover:bg-primary-hover"
+            disabled={isLoading}
+            aria-live="polite"
+          >
+            {isLoading ? "Entrando..." : "Avançar"}
           </Button>
           
           <div className="text-center space-y-2">
             <Link 
               to="/recuperar-senha" 
-              className="text-sm text-primary hover:text-primary-hover transition-colors"
+              className={`text-sm text-primary hover:text-primary-hover transition-colors ${isLoading ? "pointer-events-none opacity-50" : ""}`}
             >
               Esqueceu a senha?
             </Link>
@@ -90,7 +105,7 @@ export default function Login() {
               Não tem conta?{" "}
               <Link 
                 to="/cadastro" 
-                className="text-primary hover:text-primary-hover transition-colors"
+                className={`text-primary hover:text-primary-hover transition-colors ${isLoading ? "pointer-events-none opacity-50" : ""}`}
               >
                 Cadastre-se
               </Link>
