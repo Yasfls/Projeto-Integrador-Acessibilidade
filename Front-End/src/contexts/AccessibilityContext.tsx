@@ -17,17 +17,25 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [fontSizePercentage, setFontSizePercentage] = useState(100);
   const [daltonismMode, setDaltonismMode] = useState<DaltonismMode>('none');
 
-useEffect(() => {
-  const root = window.document.documentElement;
-  
-  if (daltonismMode === 'high-contrast') {
-    root.classList.add('high-contrast-mode');
-  } else {
-    root.classList.remove('high-contrast-mode');
-  }
-}, [daltonismMode]);
+  // 1. Efeito para gerenciar o tamanho da fonte global
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${fontSizePercentage}%`;
+  }, [fontSizePercentage]);
 
-  // Funções para controle de zoom
+  // 2. Efeito para gerenciar as classes de acessibilidade no HTML
+  useEffect(() => {
+    const root = window.document.documentElement;
+    
+    // Limpa classes anteriores para evitar conflitos
+    root.classList.remove('high-contrast-mode', 'grayscale-mode');
+
+    if (daltonismMode === 'high-contrast') {
+      root.classList.add('high-contrast-mode');
+    } else if (daltonismMode === 'grayscale') {
+      root.classList.add('grayscale-mode');
+    }
+  }, [daltonismMode]);
+
   const increaseFontSize = () => setFontSizePercentage((prev) => Math.min(prev + 10, 150));
   const decreaseFontSize = () => setFontSizePercentage((prev) => Math.max(prev - 10, 80));
   const resetFontSize = () => setFontSizePercentage(100);
@@ -43,14 +51,11 @@ useEffect(() => {
         setDaltonismMode,
       }}
     >
+      {/* Não precisamos mais das divs fixas aqui! 
+        As cores e filtros agora são controlados pelas classes 
+        '.high-contrast-mode' e '.grayscale-mode' no seu index.css.
+      */}
       {children}
-      {daltonismMode === 'grayscale' && (
-        <div className="fixed inset-0 z-[10000] pointer-events-none backdrop-grayscale" />
-      )}
-      
-      {daltonismMode === 'high-contrast' && (
-        <div className="fixed inset-0 z-[10000] pointer-events-none backdrop-contrast-150 backdrop-saturate-200" />
-      )}
     </AccessibilityContext.Provider>
   );
 };

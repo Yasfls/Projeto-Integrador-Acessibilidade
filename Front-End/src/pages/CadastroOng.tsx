@@ -21,13 +21,18 @@ export default function CadastroOng() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  
+  const [fieldErrors, setFieldErrors] = useState<{ [key: string]: boolean }>({});
+
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFieldErrors({}); // Limpa erros anteriores
 
     if (password !== confirmPassword) {
+      setFieldErrors({ password: true, confirmPassword: true });
       toast({
         title: "Erro de Validação",
         description: "As senhas não coincidem.",
@@ -39,29 +44,24 @@ export default function CadastroOng() {
     setIsLoading(true);
 
     try {
-      // 1. LIMPEZA E VALIDAÇÃO DO CNPJ COM A BRASILAPI
-      // Remove caracteres não numéricos do CNPJ para a consulta
       const cleanedCnpj = cnpj.replace(/\D/g, "");
 
       try {
-        // Consulta a API externa para validar o CNPJ
         await axios.get(`https://brasilapi.com.br/api/cnpj/v1/${cleanedCnpj}`);
-        // Se a requisição for bem-sucedida (status 200), o código continua.
       } catch (cnpjError) {
-        // Se a API retornar um erro (ex: 404), significa que o CNPJ não foi encontrado.
+        setFieldErrors({ cnpj: true });
         toast({
           title: "Erro de Validação",
           description: "CNPJ inválido ou não encontrado. Verifique o número digitado.",
           variant: "destructive",
         });
-        // Interrompe a execução do cadastro
+        setIsLoading(false);
         return;
       }
 
-      // 2. PROSSEGUE COM O CADASTRO NO SEU SISTEMA (se o CNPJ for válido)
       const ongData = {
         nomeDaOng,
-        cnpj, // Salva o CNPJ original com a formatação
+        cnpj,
         telefone,
         logradouro,
         cidade,
@@ -83,7 +83,6 @@ export default function CadastroOng() {
       }, 2000);
 
     } catch (error) {
-      // Trata erros que possam vir do SEU backend
       let errorMessage = "Não foi possível cadastrar a ONG. Tente novamente.";
       if (axios.isAxiosError(error) && error.response) {
         errorMessage = error.response.data.message || errorMessage;
@@ -94,7 +93,6 @@ export default function CadastroOng() {
         variant: "destructive",
       });
     } finally {
-      // Garante que o estado de loading seja desativado ao final, independentemente de sucesso ou erro
       setIsLoading(false);
     }
   };
@@ -106,12 +104,22 @@ export default function CadastroOng() {
       </CardTitle>
       
       <AuthCardContent>
-<form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="nomeDaOng">Nome da ONG</Label>
             <div className="relative">
               <Building2 aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="nomeDaOng" type="text" placeholder="Insira o nome da organização..." value={nomeDaOng} onChange={(e) => setNomeDaOng(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
+              <Input 
+                id="nomeDaOng" 
+                type="text" 
+                placeholder="Insira o nome da organização..." 
+                value={nomeDaOng} 
+                onChange={(e) => setNomeDaOng(e.target.value)} 
+                className="pl-10" 
+                required 
+                aria-required="true"
+                disabled={isLoading} 
+              />
             </div>
           </div>
 
@@ -119,7 +127,18 @@ export default function CadastroOng() {
             <Label htmlFor="cnpj">CNPJ</Label>
             <div className="relative">
               <FileText aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="cnpj" type="text" placeholder="00.000.000/0000-00" value={cnpj} onChange={(e) => setCnpj(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
+              <Input 
+                id="cnpj" 
+                type="text" 
+                placeholder="00.000.000/0000-00" 
+                value={cnpj} 
+                onChange={(e) => setCnpj(e.target.value)} 
+                className="pl-10" 
+                required 
+                aria-required="true"
+                aria-invalid={fieldErrors.cnpj ? "true" : "false"}
+                disabled={isLoading} 
+              />
             </div>
           </div>
           
@@ -131,7 +150,7 @@ export default function CadastroOng() {
             </div>
           </div>
 
-           <div className="space-y-2">
+          <div className="space-y-2">
             <Label htmlFor="telefone">Telefone de Contato</Label>
             <div className="relative">
               <Phone aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -139,7 +158,7 @@ export default function CadastroOng() {
             </div>
           </div>
 
-           <div className="space-y-2">
+          <div className="space-y-2">
             <Label htmlFor="logradouro">Endereço</Label>
             <div className="relative">
               <MapPin aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -170,7 +189,18 @@ export default function CadastroOng() {
             <Label htmlFor="password">Senha</Label>
             <div className="relative">
               <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="password" type="password" placeholder="Crie uma senha forte..." value={password} onChange={(e) => setPassword(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
+              <Input 
+                id="password" 
+                type="password" 
+                placeholder="Crie uma senha forte..." 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                className="pl-10" 
+                required 
+                aria-required="true"
+                aria-invalid={fieldErrors.password ? "true" : "false"}
+                disabled={isLoading} 
+              />
             </div>
           </div>
           
@@ -178,7 +208,18 @@ export default function CadastroOng() {
             <Label htmlFor="confirmPassword">Confirmar Senha</Label>
             <div className="relative">
               <Lock aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input id="confirmPassword" type="password" placeholder="Confirme sua senha..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="pl-10" required aria-required="true" disabled={isLoading} />
+              <Input 
+                id="confirmPassword" 
+                type="password" 
+                placeholder="Confirme sua senha..." 
+                value={confirmPassword} 
+                onChange={(e) => setConfirmPassword(e.target.value)} 
+                className="pl-10" 
+                required 
+                aria-required="true"
+                aria-invalid={fieldErrors.confirmPassword ? "true" : "false"}
+                disabled={isLoading} 
+              />
             </div>
           </div>
           
@@ -187,6 +228,7 @@ export default function CadastroOng() {
             className="w-full bg-primary hover:bg-primary-hover" 
             disabled={isLoading}
             aria-live="polite"
+            aria-busy={isLoading}
           >
             {isLoading ? "Validando CNPJ e cadastrando..." : "Cadastrar ONG"}
           </Button>
