@@ -91,22 +91,28 @@ export default function Home() {
         </section>
 
         {isAuthenticated && (
-          <section className="bg-accent py-16">
+          <section className="bg-primary py-16"> {/* <- Mudei de bg-accent para bg-primary */}
             <div className="container mx-auto px-4">
               <div className="text-center space-y-6">
-                <h2 className="text-3xl font-bold text-primary">
+                
+                {/* O título agora usa a cor de foreground (texto preto) */}
+                <h2 className="text-3xl font-bold text-primary-foreground">
                   Bem-vindo!
                 </h2>
-                <p className="text-lg text-accent-foreground max-w-2xl mx-auto">
+                
+                {/* O parágrafo também usa a cor de foreground */}
+                <p className="text-lg text-primary-foreground max-w-2xl mx-auto">
                   Explore nossas ONGs parceiras e descubra como você pode fazer a diferença
                   na vida de muitas pessoas através da educação.
                 </p>
+                
                 <div className="flex flex-wrap justify-center gap-4">
                   <Button
-                    // AJUSTADO: Atualizado de "/ongs-parceiras" para "/ongs"
                     onClick={() => navigate("/ongs")}
+                    /* Os botões agora têm fundo preto e borda amarela (outline) */
                     variant="outline"
                     size="lg"
+                    className="bg-background text-foreground hover:bg-background/90 border-transparent"
                   >
                     Ver ONGs Parceiras
                   </Button>
@@ -114,10 +120,12 @@ export default function Home() {
                     onClick={() => navigate("/como-funciona")}
                     variant="outline"
                     size="lg"
+                    className="bg-background text-foreground hover:bg-background/90 border-transparent"
                   >
                     Como Funciona?
                   </Button>
                 </div>
+                
               </div>
             </div>
           </section>
