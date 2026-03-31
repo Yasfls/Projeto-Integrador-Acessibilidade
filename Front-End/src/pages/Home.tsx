@@ -14,7 +14,8 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleVolunteerClick = () => {
-    navigate("/ongs-parceiras");
+    // AJUSTADO: Atualizado de "/ongs-parceiras" para "/ongs"
+    navigate("/ongs");
   };
 
   const handleOngClick = () => {
@@ -48,7 +49,6 @@ export default function Home() {
                       Quero ser voluntário
                     </Button>
                   </TooltipTrigger>
-                  {/* AJUSTE APLICADO AQUI */}
                   <TooltipContent 
                     className="bg-accent text-accent-foreground"
                     sideOffset={5}
@@ -69,7 +69,6 @@ export default function Home() {
                       Quero encontrar um voluntário
                     </Button>
                   </TooltipTrigger>
-                  {/* AJUSTE APLICADO AQUI */}
                   <TooltipContent 
                     className="bg-accent text-accent-foreground"
                     sideOffset={5}
@@ -104,7 +103,8 @@ export default function Home() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <Button
-                    onClick={() => navigate("/ongs-parceiras")}
+                    // AJUSTADO: Atualizado de "/ongs-parceiras" para "/ongs"
+                    onClick={() => navigate("/ongs")}
                     variant="outline"
                     size="lg"
                   >
