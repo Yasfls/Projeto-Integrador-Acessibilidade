@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
+
 import {
   Tooltip,
   TooltipContent,
@@ -24,8 +23,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header/>
-
       <main id="conteudo-principal" tabIndex={-1} className="flex-1 focus:outline-none">
         <section className="container mx-auto px-4 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -126,8 +123,6 @@ export default function Home() {
           </section>
         )}
       </main>
-
-      <Footer variant={isAuthenticated ? "complete" : "simple"} />
     </div>
   );
 }

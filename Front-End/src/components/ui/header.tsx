@@ -9,13 +9,12 @@ export default function Header() {
 
   // A lista de links públicos foi REMOVIDA.
   
-  // Esta é a única lista de navegação que o Header conhecerá a partir de agora.
+// Esta é a única lista de navegação que o Header conhecerá a partir de agora.
   const authenticatedNavItems = [
     { label: "Início", href: "/" },
-    { label: "Sobre o Projeto", href: "/sobre-o-projeto" },
+    { label: "Sobre o Projeto", href: "/sobre" }, // <- Alterado de "/sobre-o-projeto" para "/sobre"
     { label: "Como Funciona?", href: "/como-funciona" },
-    { label: "ONGs Parceiras", href: "/ongs-parceiras" },
-    // { label: "Contato", href: "/contato" },
+    { label: "ONGs Parceiras", href: "/ongs" }, // <- Alterado de "/ongs-parceiras" para "/ongs"
   ];
 
   // A lógica condicional foi substituída. 
