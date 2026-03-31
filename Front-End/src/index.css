@@ -51,15 +51,28 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 
   .high-contrast-mode *:focus-visible {
     outline: 3px solid hsl(var(--foreground)) !important;
     outline-offset: 2px;
+  }
+
+
+  .high-contrast-mode {
+    --gradient-main: none;
+    --gradient-card: none;  
+    --shadow-hover: none;
+  }
+
+
+  .grayscale-mode {
+    filter: grayscale(100%);
   }
 }

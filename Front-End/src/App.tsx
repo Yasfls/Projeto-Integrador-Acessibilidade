@@ -50,12 +50,12 @@ function App() {
           {/* Menu de acessibilidade fixo no canto da tela */}
           <AccessibilityMenu />
           
-          {/* Componentes de Notificação */}
+{/* Componentes de Notificação */}
           <Toaster />
           <Sonner />
         </BrowserRouter>
-      </TooltipProvider>
-      </AccessibilityProvider>
+      </TooltipProvider> {/* Fechou o Tooltip */}
+    </AccessibilityProvider>
   );
 }
 
