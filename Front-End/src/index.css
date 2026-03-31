@@ -71,7 +71,6 @@
     --shadow-hover: none;
   }
 
-
   .grayscale-mode {
     filter: grayscale(100%);
   }

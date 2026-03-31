@@ -51,10 +51,6 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
         setDaltonismMode,
       }}
     >
-      {/* Não precisamos mais das divs fixas aqui! 
-        As cores e filtros agora são controlados pelas classes 
-        '.high-contrast-mode' e '.grayscale-mode' no seu index.css.
-      */}
       {children}
     </AccessibilityContext.Provider>
   );
