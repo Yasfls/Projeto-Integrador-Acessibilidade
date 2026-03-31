@@ -112,12 +112,12 @@ export default function ComoFunciona() {
           <p className="text-lg opacity-90 mb-6">
             Junte-se a centenas de professores que já estão transformando vidas através da educação.
           </p>
-          <button 
-            onClick={() => navigate("/ongs-parceiras")}
-            className="bg-background text-foreground px-8 py-3 rounded-md font-semibold hover:bg-background/90 transition-colors"
-          >
-            Ver Oportunidades
-          </button>
+<button 
+  onClick={() => navigate("/ongs")} // <- Mude de "/ongs-parceiras" para "/ongs"
+  className="bg-background text-foreground px-8 py-3 rounded-md font-semibold hover:bg-background/90 transition-colors"
+>
+  Ver Oportunidades
+</button>
         </div>
       </div>
     </div>

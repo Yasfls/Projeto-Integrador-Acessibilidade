@@ -7,7 +7,7 @@ interface FooterProps {
 export default function Footer({ variant = "simple" }: FooterProps) {
   if (variant === "simple") {
     return (
-      <footer className="bg-muted py-8 mt-16">
+      <footer className="bg-muted py-8 mt-16 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-primary mb-4">Contato</h3>
@@ -43,7 +43,8 @@ export default function Footer({ variant = "simple" }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link to="/sobre-o-projeto" className="opacity-90 hover:opacity-100 transition-opacity">
+                {/* CORRIGIDO PARA /sobre */}
+                <Link to="/sobre" className="opacity-90 hover:opacity-100 transition-opacity">
                   Sobre o Projeto
                 </Link>
               </li>
@@ -53,7 +54,8 @@ export default function Footer({ variant = "simple" }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link to="/ongs-parceiras" className="opacity-90 hover:opacity-100 transition-opacity">
+                {/* CORRIGIDO PARA /ongs */}
+                <Link to="/ongs" className="opacity-90 hover:opacity-100 transition-opacity">
                   ONGs Parceiras
                 </Link>
               </li>

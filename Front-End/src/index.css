@@ -31,44 +31,37 @@
     --radius: 0.5rem;
   }
 
-  .high-contrast-mode {
-    /* 1. Todos os fundos viram PRETO absoluto */
-    --background: 0 0% 0%;       
-    --card: 0 0% 0%;
-    --popover: 0 0% 0%;
-    --secondary: 0 0% 0%;
-    --muted: 0 0% 0%;
-    --accent: 0 0% 0%; /* Corrige a faixa que estava verde clara */
-    --input: 0 0% 0%;
-    
-    /* 2. Todos os textos principais viram AMARELO vivo */
-    --foreground: 60 100% 50%;        
-    --card-foreground: 60 100% 50%;
-    --popover-foreground: 60 100% 50%;
-    --secondary-foreground: 60 100% 50%;
-    --accent-foreground: 60 100% 50%;
-    
-    /* 3. Textos secundários viram BRANCO para contraste e leitura fácil */
-    --muted-foreground: 0 0% 100%; /* Corrige os textos apagados nas descrições */
-    
-    /* 4. Cores de Botões: Fundo Amarelo, Texto Preto */
-    --primary: 60 100% 50%;
-    --primary-foreground: 0 0% 0%;
-    --primary-hover: 60 100% 40%;
-    
-    /* 5. Alertas e erros */
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 0%;
-    
-    /* 6. Contornos de elementos e foco de teclado em amarelo */
-    --border: 60 100% 50%;
-    --ring: 60 100% 50%;
-    
-    /* 7. Remoção total de sombras e degradês que confundem a visão */
-    --gradient-main: none;
-    --gradient-card: none;
-    --shadow-card: none;
-    --shadow-hover: none;
+  :root.high-contrast-mode {
+      --background: 0 0% 0%; 
+      --card: 0 0% 0%;
+      --popover: 0 0% 0%;
+      --secondary: 0 0% 0%;
+      --muted: 0 0% 0%;
+      --accent: 0 0% 0%;
+      --input: 0 0% 0%;
+      
+      --foreground: 60 100% 50%;        
+      --card-foreground: 60 100% 50%;
+      --popover-foreground: 60 100% 50%;
+      --secondary-foreground: 60 100% 50%;
+      --accent-foreground: 60 100% 50%;
+      
+      --muted-foreground: 0 0% 100%;
+      
+      --primary: 60 100% 50%;
+      --primary-foreground: 0 0% 0%;
+      --primary-hover: 60 100% 40%;
+      
+      --destructive: 0 100% 50%;
+      --destructive-foreground: 0 0% 0%;
+      
+      --border: 60 100% 50%;
+      --ring: 60 100% 50%;
+      
+      --gradient-main: none;
+      --gradient-card: none;
+      --shadow-card: none;
+      --shadow-hover: none;
   }
 }
 
