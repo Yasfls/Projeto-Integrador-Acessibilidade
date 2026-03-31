@@ -2,8 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
 
 interface ONG {
   id: number;
@@ -31,8 +29,6 @@ export default function OngsParceiras() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header/>
-
       <main id="conteudo-principal" tabIndex={-1} className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-12">
@@ -98,8 +94,6 @@ export default function OngsParceiras() {
           </div>
         </div>
       </main>
-
-      <Footer variant="complete" />
     </div>
   );
 }

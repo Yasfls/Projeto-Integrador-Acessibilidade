@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
 import { Search, Cog, Heart } from "lucide-react";
 
 export default function ComoFunciona() {
@@ -31,7 +29,6 @@ export default function ComoFunciona() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* O Header foi adicionado aqui */}
-      <Header />
       
       <main id="conteudo-principal" tabIndex={-1} className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
         <div className="text-center mb-16">
@@ -138,8 +135,6 @@ export default function ComoFunciona() {
           </div>
         </div>
       </main>
-      
-      <Footer variant="complete" />
     </div>
   );
 }

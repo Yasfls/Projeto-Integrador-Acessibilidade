@@ -36,7 +36,7 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [daltonismMode]);
 
-  const increaseFontSize = () => setFontSizePercentage((prev) => Math.min(prev + 10, 150));
+  const increaseFontSize = () => setFontSizePercentage((prev) => Math.min(prev + 10, 200));
   const decreaseFontSize = () => setFontSizePercentage((prev) => Math.max(prev - 10, 80));
   const resetFontSize = () => setFontSizePercentage(100);
 
