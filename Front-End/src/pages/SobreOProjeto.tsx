@@ -90,24 +90,24 @@ export default function SobreOProjeto() {
           </div>
         </div>
 
-        {/* Seção de resultados esperados alinhada com os cards */}
-        <div className="mt-20 bg-accent rounded-lg p-12 max-w-6xl mx-auto">
+        {/* SEÇÃO ATUALIZADA: Resultados Esperados com formato de Caixa Amarela */}
+        <div className="mt-20 bg-primary text-primary-foreground rounded-2xl p-12 max-w-6xl mx-auto shadow-lg">
           <div className="text-center space-y-6">
-            <h2 className="text-3xl font-bold text-primary">
+            <h2 className="text-3xl font-bold">
               Resultados Esperados
             </h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">500+</div>
-                <p className="text-accent-foreground">Professores voluntários</p>
+                <div className="text-4xl font-bold mb-2">500+</div>
+                <p className="text-lg opacity-90">Professores voluntários</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <p className="text-accent-foreground">ONGs parceiras</p>
+                <div className="text-4xl font-bold mb-2">50+</div>
+                <p className="text-lg opacity-90">ONGs parceiras</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">10.000+</div>
-                <p className="text-accent-foreground">Vidas impactadas</p>
+                <div className="text-4xl font-bold mb-2">10.000+</div>
+                <p className="text-lg opacity-90">Vidas impactadas</p>
               </div>
             </div>
           </div>

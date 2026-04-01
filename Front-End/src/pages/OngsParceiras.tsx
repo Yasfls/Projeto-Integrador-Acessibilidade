@@ -28,7 +28,6 @@ export default function OngsParceiras() {
   };
 
   return (
-    // Mesma lógica: usamos uma <div> limpa como contêiner
     <div className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
       <div className="max-w-3xl mx-auto text-center">
         <div className="mb-12">
@@ -73,12 +72,13 @@ export default function OngsParceiras() {
         </Card>
       </div>
 
-      <div className="text-center mt-16">
-        <div className="bg-accent rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-primary mb-4">
+      {/* SEÇÃO ATUALIZADA: Dúvidas sobre o voluntariado com Caixa Amarela */}
+      <div className="text-center mt-20">
+        <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">
             Dúvidas sobre o voluntariado?
           </h2>
-          <p className="text-accent-foreground mb-6">
+          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
             Estamos sempre disponíveis para ajudar. Entre em contato
             conosco para saber mais sobre as oportunidades.
           </p>
@@ -87,7 +87,11 @@ export default function OngsParceiras() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="bg-background text-foreground hover:bg-background/90 border-transparent font-bold px-8"
+            >
               Entrar em contato
             </Button>
           </a>
