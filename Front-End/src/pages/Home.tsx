@@ -90,43 +90,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ... restante do código acima ... */}
+
         {isAuthenticated && (
-          <section className="bg-primary py-16"> {/* <- Mudei de bg-accent para bg-primary */}
-            <div className="container mx-auto px-4">
-              <div className="text-center space-y-6">
-                
-                {/* O título agora usa a cor de foreground (texto preto) */}
-                <h2 className="text-3xl font-bold text-primary-foreground">
-                  Bem-vindo!
-                </h2>
-                
-                {/* O parágrafo também usa a cor de foreground */}
-                <p className="text-lg text-primary-foreground max-w-2xl mx-auto">
-                  Explore nossas ONGs parceiras e descubra como você pode fazer a diferença
-                  na vida de muitas pessoas através da educação.
-                </p>
-                
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Button
-                    onClick={() => navigate("/ongs")}
-                    /* Os botões agora têm fundo preto e borda amarela (outline) */
-                    variant="outline"
-                    size="lg"
-                    className="bg-background text-foreground hover:bg-background/90 border-transparent"
-                  >
-                    Ver ONGs Parceiras
-                  </Button>
-                  <Button
-                    onClick={() => navigate("/como-funciona")}
-                    variant="outline"
-                    size="lg"
-                    className="bg-background text-foreground hover:bg-background/90 border-transparent"
-                  >
-                    Como Funciona?
-                  </Button>
-                </div>
-                
+          // Removemos a cor do fundo da section e deixamos só o container
+          <section className="container mx-auto px-4 py-16">
+            
+            {/* CRIAMOS A CAIXA AQUI: Fundo primary, texto foreground, cantos arredondados e sombra */}
+            <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 shadow-lg text-center space-y-6 max-w-5xl mx-auto">
+              
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Bem-vindo!
+              </h2>
+              
+              <p className="text-lg opacity-90 max-w-2xl mx-auto">
+                Explore nossas ONGs parceiras e descubra como você pode fazer a diferença
+                na vida de muitas pessoas através da educação.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-4 pt-4">
+                <Button
+                  onClick={() => navigate("/ongs")}
+                  variant="outline"
+                  size="lg"
+                  className="bg-background text-foreground hover:bg-background/90 border-transparent font-bold px-8"
+                >
+                  Ver ONGs Parceiras
+                </Button>
+                <Button
+                  onClick={() => navigate("/como-funciona")}
+                  variant="outline"
+                  size="lg"
+                  className="bg-background text-foreground hover:bg-background/90 border-transparent font-bold px-8"
+                >
+                  Como Funciona?
+                </Button>
               </div>
+              
             </div>
           </section>
         )}
