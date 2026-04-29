@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
-const JWT_SECRET_KEY = process.env.JWT_SECRET || 'chave_secreta_para_ongs'; // Use uma chave diferente se quiser
+const JWT_SECRET_KEY = process.env.JWT_SECRET || 'chave_secreta_para_ongs';
 
 class OngController {
 
