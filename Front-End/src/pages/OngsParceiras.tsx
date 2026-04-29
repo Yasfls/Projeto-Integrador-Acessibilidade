@@ -72,7 +72,6 @@ export default function OngsParceiras() {
         </Card>
       </div>
 
-      {/* SEÇÃO ATUALIZADA: Dúvidas sobre o voluntariado com Caixa Amarela */}
       <div className="text-center mt-20">
         <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">
