@@ -18,7 +18,6 @@ export default function RecuperarSenha() {
   const handleRequestCode = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simular envio de código
     toast({
       title: "Código enviado!",
       description: "Verifique sua caixa de entrada.",
