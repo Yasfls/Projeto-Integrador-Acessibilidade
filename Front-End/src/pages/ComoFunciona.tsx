@@ -24,7 +24,6 @@ export default function ComoFunciona() {
   ];
 
   return (
-    // Trocamos <main> por <div> e tiramos a div de 'min-h-screen' que já existe no App.tsx
     <div className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold text-primary mb-4">
