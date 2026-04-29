@@ -14,7 +14,6 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleVolunteerClick = () => {
-    // AJUSTADO: Atualizado de "/ongs-parceiras" para "/ongs"
     navigate("/ongs");
   };
 
@@ -90,13 +89,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ... restante do código acima ... */}
 
         {isAuthenticated && (
-          // Removemos a cor do fundo da section e deixamos só o container
           <section className="container mx-auto px-4 py-16">
             
-            {/* CRIAMOS A CAIXA AQUI: Fundo primary, texto foreground, cantos arredondados e sombra */}
             <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 shadow-lg text-center space-y-6 max-w-5xl mx-auto">
               
               <h2 className="text-3xl md:text-4xl font-bold">
