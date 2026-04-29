@@ -1,5 +1,3 @@
-// Arquivo: models/ong.js
-
 const database = require('../config/database');
 const { Sequelize } = database;
 
