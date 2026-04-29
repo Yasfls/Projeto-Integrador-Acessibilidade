@@ -29,7 +29,7 @@ export default function CadastroOng() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFieldErrors({}); // Limpa erros anteriores
+    setFieldErrors({});
 
     if (password !== confirmPassword) {
       setFieldErrors({ password: true, confirmPassword: true });
