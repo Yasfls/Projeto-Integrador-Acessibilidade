@@ -31,7 +31,7 @@ export default function Cadastro() {
       return;
     }
 
-    setIsLoading(true); // Inicia o loading
+    setIsLoading(true);
 
     try {
       const userData = {
@@ -65,7 +65,7 @@ export default function Cadastro() {
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false); // Finaliza o loading, independente de sucesso ou erro
+      setIsLoading(false);
     }
   };
 
