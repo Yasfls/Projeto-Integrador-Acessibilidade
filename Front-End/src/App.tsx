@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner"; // Adicionado para notificações
-import { TooltipProvider } from "@/components/ui/tooltip"; // NECESSÁRIO para corrigir o erro da tela branca
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { AccessibilityProvider } from "./contexts/AccessibilityContext";
 import Header from "./components/ui/header";
 import Footer from "./components/ui/footer";
 import { SkipLink } from "./components/SkipLink";
-import { AccessibilityMenu } from "./components/AccessibilityMenu"; // Adicionado menu flutuante
+import { AccessibilityMenu } from "./components/AccessibilityMenu";
 
-// Páginas
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
@@ -22,15 +21,13 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <AccessibilityProvider>
-      {/* O TooltipProvider deve envolver tudo para evitar o erro de contexto do Shadcn */}
       <TooltipProvider delayDuration={200}>
         <BrowserRouter>
-          {/* O SkipLink deve ser o primeiro para ser capturado pelo 'Tab' */}
+          
           <SkipLink />
           
           <Header />
 
-          {/* O id="conteudo-principal" é o alvo do SkipLink */}
           <main id="conteudo-principal" tabIndex={-1} className="outline-none min-h-screen">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -47,10 +44,8 @@ function App() {
 
           <Footer />
 
-          {/* Menu de acessibilidade fixo no canto da tela */}
           <AccessibilityMenu />
           
-{/* Componentes de Notificação */}
           <Toaster />
           <Sonner />
         </BrowserRouter>
