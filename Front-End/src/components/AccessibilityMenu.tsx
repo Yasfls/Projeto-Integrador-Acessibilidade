@@ -14,7 +14,6 @@ export function AccessibilityMenu() {
   } = useAccessibility();
 
   return (
-    // A classe "fixed" junto com "bottom-6 right-6" é o que prende o botão na tela!
     <div className="fixed bottom-6 right-6 z-[9999]">
       {isOpen && (
         <div className="absolute bottom-16 right-0 w-72 bg-background border shadow-lg rounded-xl p-4 mb-2 animate-in slide-in-from-bottom-5">
@@ -26,7 +25,6 @@ export function AccessibilityMenu() {
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>X</Button>
           </div>
 
-          {/* Controle de Fonte */}
           <div className="space-y-2 mb-6">
             <span className="text-sm font-semibold flex items-center gap-2">
               <Type className="w-4 h-4" /> Tamanho da Letra
@@ -44,7 +42,6 @@ export function AccessibilityMenu() {
             </div>
           </div>
 
-          {/* Controle de Contraste e Daltonismo */}
           <div className="space-y-2">
             <span className="text-sm font-semibold flex items-center gap-2">
               <Palette className="w-4 h-4" /> Contraste e Cores
@@ -79,7 +76,6 @@ export function AccessibilityMenu() {
         </div>
       )}
 
-      {/* BOTÃO PRINCIPAL COM ÍCONE DE OLHO */}
       <Button 
         onClick={() => setIsOpen(!isOpen)} 
         size="icon"
