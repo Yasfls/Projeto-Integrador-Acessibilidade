@@ -49,7 +49,7 @@ function App() {
           <Toaster />
           <Sonner />
         </BrowserRouter>
-      </TooltipProvider> {/* Fechou o Tooltip */}
+      </TooltipProvider>
     </AccessibilityProvider>
   );
 }
