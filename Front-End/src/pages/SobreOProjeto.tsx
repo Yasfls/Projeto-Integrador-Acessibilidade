@@ -16,13 +16,10 @@ export default function SobreOProjeto() {
           </p>
         </div>
 
-        {/* Fluxograma visual com cards conectados */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Linha conectora */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/30 transform -translate-y-1/2 z-0"></div>
           
           <div className="grid lg:grid-cols-3 gap-8 relative z-10">
-            {/* Card 1: Carência de Profissionais */}
             <Card className="shadow-card hover:shadow-hover transition-shadow duration-300 bg-gradient-card h-full flex flex-col">
               <CardContent className="p-8 text-center flex flex-col flex-1 gap-4">
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center shrink-0">
@@ -44,7 +41,6 @@ export default function SobreOProjeto() {
               </CardContent>
             </Card>
 
-            {/* Card 2: Impacto Social */}
             <Card className="shadow-card hover:shadow-hover transition-shadow duration-300 bg-gradient-card h-full flex flex-col">
               <CardContent className="p-8 text-center flex flex-col flex-1 gap-4">
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center shrink-0">
@@ -66,7 +62,6 @@ export default function SobreOProjeto() {
               </CardContent>
             </Card>
 
-            {/* Card 3: Projeto com Propósito */}
             <Card className="shadow-card hover:shadow-hover transition-shadow duration-300 bg-gradient-card h-full flex flex-col">
               <CardContent className="p-8 text-center flex flex-col flex-1 gap-4">
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center shrink-0">
@@ -90,7 +85,6 @@ export default function SobreOProjeto() {
           </div>
         </div>
 
-        {/* SEÇÃO ATUALIZADA: Resultados Esperados com formato de Caixa Amarela */}
         <div className="mt-20 bg-primary text-primary-foreground rounded-2xl p-12 max-w-6xl mx-auto shadow-lg">
           <div className="text-center space-y-6">
             <h2 className="text-3xl font-bold">
