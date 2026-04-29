@@ -17,16 +17,13 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [fontSizePercentage, setFontSizePercentage] = useState(100);
   const [daltonismMode, setDaltonismMode] = useState<DaltonismMode>('none');
 
-  // 1. Efeito para gerenciar o tamanho da fonte global
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSizePercentage}%`;
   }, [fontSizePercentage]);
 
-  // 2. Efeito para gerenciar as classes de acessibilidade no HTML
   useEffect(() => {
     const root = window.document.documentElement;
     
-    // Limpa classes anteriores para evitar conflitos
     root.classList.remove('high-contrast-mode', 'grayscale-mode');
 
     if (daltonismMode === 'high-contrast') {
