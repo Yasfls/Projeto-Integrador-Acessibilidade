@@ -43,7 +43,6 @@ export default function Footer({ variant = "simple" }: FooterProps) {
                 </Link>
               </li>
               <li>
-                {/* CORRIGIDO PARA /sobre */}
                 <Link to="/sobre" className="opacity-90 hover:opacity-100 transition-opacity">
                   Sobre o Projeto
                 </Link>
@@ -54,7 +53,6 @@ export default function Footer({ variant = "simple" }: FooterProps) {
                 </Link>
               </li>
               <li>
-                {/* CORRIGIDO PARA /ongs */}
                 <Link to="/ongs" className="opacity-90 hover:opacity-100 transition-opacity">
                   ONGs Parceiras
                 </Link>
