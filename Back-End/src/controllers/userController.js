@@ -53,13 +53,11 @@ class UserController {
                 return res.status(404).json({ message: 'Usuário não encontrado' });
             }
 
-            // Compara a senha enviada com a senha criptografada no banco
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if (!isPasswordValid) {
-                return res.status(401).json({ message: 'Credenciais inválidas' }); // Use uma mensagem genérica por segurança
+                return res.status(401).json({ message: 'Credenciais inválidas' });
             }
 
-            // Gera o token JWT
             const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET_KEY, { expiresIn: '1h' });
             
             return res.status(200).json({ token });
@@ -92,7 +90,7 @@ class UserController {
     async listarUsuarios(req, res) {
         try {
             const users = await User.findAll({
-                attributes: { exclude: ['password'] } // Exclui o campo de senha da listagem
+                attributes: { exclude: ['password'] }
             });
             return res.status(200).json(users);
         } catch (error) {
@@ -111,7 +109,6 @@ class UserController {
                 return res.status(404).json({ message: 'Usuário não encontrado.' });
             }
 
-            // Atualiza os campos
             user.fullName = fullName || user.fullName;
             user.areaOfExpertise = areaOfExpertise || user.areaOfExpertise;
             user.email = email || user.email;
