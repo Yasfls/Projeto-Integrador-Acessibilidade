@@ -13,6 +13,15 @@ export function AccessibilityMenu() {
     setDaltonismMode 
   } = useAccessibility();
 
+  const colorModes = [
+    { mode: 'none', label: 'Cores Padrão' },
+    { mode: 'grayscale', label: 'Escala de Cinza' },
+    { mode: 'high-contrast', label: 'Alto Contraste' },
+    { mode: 'protanopia', label: 'Protanopia (Vermelho)' },
+    { mode: 'deuteranopia', label: 'Deuteranopia (Verde)' },
+    { mode: 'tritanopia', label: 'Tritanopia (Azul)' },
+  ] as const;
+
   return (
     <div className="fixed bottom-6 right-6 z-[9999]">
       {isOpen && (
@@ -47,30 +56,17 @@ export function AccessibilityMenu() {
               <Palette className="w-4 h-4" /> Contraste e Cores
             </span>
             <div className="flex flex-col gap-2">
-              <Button 
-                variant={daltonismMode === 'none' ? 'default' : 'outline'} 
-                size="sm" 
-                className="w-full justify-start"
-                onClick={() => setDaltonismMode('none')}
-              >
-                Cores Padrão
-              </Button>
-              <Button 
-                variant={daltonismMode === 'grayscale' ? 'default' : 'outline'} 
-                size="sm" 
-                className="w-full justify-start"
-                onClick={() => setDaltonismMode('grayscale')}
-              >
-                Modo Escala de Cinza
-              </Button>
-              <Button 
-                variant={daltonismMode === 'high-contrast' ? 'default' : 'outline'} 
-                size="sm" 
-                className="w-full justify-start"
-                onClick={() => setDaltonismMode('high-contrast')}
-              >
-                Alto Contraste
-              </Button>
+              {colorModes.map(({ mode, label }) => (
+                <Button
+                  key={mode}
+                  variant={daltonismMode === mode ? 'default' : 'outline'}
+                  size="sm"
+                  className="w-full justify-start"
+                  onClick={() => setDaltonismMode(mode)}
+                >
+                  {label}
+                </Button>
+              ))}
             </div>
           </div>
         </div>

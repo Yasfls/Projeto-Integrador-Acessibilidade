@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type DaltonismMode = 'none' | 'grayscale' | 'high-contrast';
+type DaltonismMode = 'none' | 'grayscale' | 'high-contrast' | 'protanopia' | 'deuteranopia' | 'tritanopia';
 
 interface AccessibilityContextData {
   fontSizePercentage: number;
@@ -23,13 +23,25 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
-    root.classList.remove('high-contrast-mode', 'grayscale-mode');
+
+    root.classList.remove(
+      'high-contrast-mode',
+      'grayscale-mode',
+      'protanopia-mode',
+      'deuteranopia-mode',
+      'tritanopia-mode'
+    );
 
     if (daltonismMode === 'high-contrast') {
       root.classList.add('high-contrast-mode');
     } else if (daltonismMode === 'grayscale') {
       root.classList.add('grayscale-mode');
+    } else if (daltonismMode === 'protanopia') {
+      root.classList.add('protanopia-mode');
+    } else if (daltonismMode === 'deuteranopia') {
+      root.classList.add('deuteranopia-mode');
+    } else if (daltonismMode === 'tritanopia') {
+      root.classList.add('tritanopia-mode');
     }
   }, [daltonismMode]);
 
