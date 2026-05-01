@@ -17,33 +17,17 @@ export default function RecuperarSenha() {
 
   const handleRequestCode = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    toast({
-      title: "Código enviado!",
-      description: "Verifique sua caixa de entrada.",
-    });
-    
+    toast({ title: "Código enviado!", description: "Verifique sua caixa de entrada." });
     setStep("verify");
   };
 
   const handleVerifyCode = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (code === "123456") {
-      toast({
-        title: "Código válido!",
-        description: "Redirecionando para redefinir senha...",
-      });
-      
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      toast({ title: "Código válido!", description: "Redirecionando para redefinir senha..." });
+      setTimeout(() => navigate("/login"), 2000);
     } else {
-      toast({
-        title: "Código inválido",
-        description: "Verifique o código e tente novamente.",
-        variant: "destructive"
-      });
+      toast({ title: "Código inválido", description: "Verifique o código e tente novamente.", variant: "destructive" });
     }
   };
 
@@ -55,15 +39,15 @@ export default function RecuperarSenha() {
         </CardTitle>
         
         <AuthCardContent>
-          <p className="text-sm text-muted-foreground text-center mb-4">
+          <p className="text-sm text-muted-foreground text-center mb-4" aria-live="polite">
             Enviaremos um código no seu e-mail para você criar uma nova senha.
           </p>
           
-          <form onSubmit={handleRequestCode} className="space-y-4">
+          <form onSubmit={handleRequestCode} className="space-y-4" aria-label="Formulário de recuperação de senha" noValidate>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Mail aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   id="email"
                   type="email"
@@ -72,6 +56,8 @@ export default function RecuperarSenha() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10"
                   required
+                  aria-required="true"
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -84,8 +70,9 @@ export default function RecuperarSenha() {
               <Link 
                 to="/login" 
                 className="text-sm text-primary hover:text-primary-hover transition-colors inline-flex items-center gap-1"
+                aria-label="Voltar para a página de login"
               >
-                <ArrowLeft className="h-3 w-3" />
+                <ArrowLeft className="h-3 w-3" aria-hidden="true" />
                 Voltar para o login
               </Link>
             </div>
@@ -102,12 +89,12 @@ export default function RecuperarSenha() {
       </CardTitle>
       
       <AuthCardContent>
-        <p className="text-sm text-muted-foreground text-center mb-4">
+        <p className="text-sm text-muted-foreground text-center mb-4" aria-live="polite">
           Enviamos um código de verificação para <strong>{email}</strong>. 
           Digite o código abaixo para continuar.
         </p>
         
-        <form onSubmit={handleVerifyCode} className="space-y-4">
+        <form onSubmit={handleVerifyCode} className="space-y-4" aria-label="Formulário de verificação de código" noValidate>
           <div className="space-y-2">
             <Label htmlFor="code">Código de Verificação</Label>
             <Input
@@ -119,8 +106,12 @@ export default function RecuperarSenha() {
               className="text-center text-lg tracking-widest"
               maxLength={6}
               required
+              aria-required="true"
+              aria-describedby="code-hint"
+              inputMode="numeric"
+              autoComplete="one-time-code"
             />
-            <p className="text-xs text-muted-foreground text-center">
+            <p id="code-hint" className="text-xs text-muted-foreground text-center">
               Código de exemplo: 123456
             </p>
           </div>
@@ -133,8 +124,9 @@ export default function RecuperarSenha() {
             <Link 
               to="/login" 
               className="text-sm text-primary hover:text-primary-hover transition-colors inline-flex items-center gap-1"
+              aria-label="Voltar para a página de login"
             >
-              <ArrowLeft className="h-3 w-3" />
+              <ArrowLeft className="h-3 w-3" aria-hidden="true" />
               Voltar para o login
             </Link>
           </div>

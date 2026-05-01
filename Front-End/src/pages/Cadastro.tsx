@@ -16,13 +16,16 @@ export default function Cadastro() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPasswordError("");
 
     if (password !== confirmPassword) {
+      setPasswordError("As senhas não coincidem.");
       toast({
         title: "Erro de Validação",
         description: "As senhas não coincidem.",
@@ -34,36 +37,15 @@ export default function Cadastro() {
     setIsLoading(true);
 
     try {
-      const userData = {
-        fullName,
-        areaOfExpertise,
-        email,
-        password,
-      };
-
-  await axios.post("http://localhost:3001/users", userData);
-
-      toast({
-        title: "Sucesso!",
-        description: "Conta criada com sucesso. Você será redirecionado.",
-      });
-
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-
+      await axios.post("http://localhost:3001/users", { fullName, areaOfExpertise, email, password });
+      toast({ title: "Sucesso!", description: "Conta criada com sucesso. Você será redirecionado." });
+      setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       let errorMessage = "Não foi possível criar a conta. Tente novamente mais tarde.";
-      
       if (axios.isAxiosError(error) && error.response) {
         errorMessage = error.response.data.message || errorMessage;
       }
-      
-      toast({
-        title: "Erro no Cadastro",
-        description: errorMessage,
-        variant: "destructive",
-      });
+      toast({ title: "Erro no Cadastro", description: errorMessage, variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
@@ -76,8 +58,8 @@ export default function Cadastro() {
       </CardTitle>
       
       <AuthCardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-           <div className="space-y-2">
+        <form onSubmit={handleSubmit} className="space-y-4" aria-label="Formulário de cadastro de voluntário" noValidate>
+          <div className="space-y-2">
             <Label htmlFor="fullName">Nome Completo</Label>
             <div className="relative">
               <User aria-hidden="true" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -90,6 +72,7 @@ export default function Cadastro() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="name"
                 disabled={isLoading}
               />
             </div>
@@ -126,6 +109,7 @@ export default function Cadastro() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="email"
                 disabled={isLoading}
               />
             </div>
@@ -144,6 +128,9 @@ export default function Cadastro() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="new-password"
+                aria-describedby={passwordError ? "password-error" : undefined}
+                aria-invalid={passwordError ? "true" : "false"}
                 disabled={isLoading}
               />
             </div>
@@ -162,9 +149,17 @@ export default function Cadastro() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="new-password"
+                aria-describedby={passwordError ? "password-error" : undefined}
+                aria-invalid={passwordError ? "true" : "false"}
                 disabled={isLoading}
               />
             </div>
+            {passwordError && (
+              <p id="password-error" role="alert" className="text-sm text-destructive">
+                {passwordError}
+              </p>
+            )}
           </div>
           
           <Button 
@@ -172,6 +167,7 @@ export default function Cadastro() {
             className="w-full bg-primary hover:bg-primary-hover" 
             disabled={isLoading}
             aria-live="polite"
+            aria-busy={isLoading}
           >
             {isLoading ? "Criando conta..." : "Criar Conta"}
           </Button>

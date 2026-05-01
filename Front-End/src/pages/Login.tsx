@@ -13,13 +13,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false); 
-  
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true); 
-
+    setIsLoading(true);
     setTimeout(() => {
       localStorage.setItem("isAuthenticated", "true");
       navigate("/");
@@ -33,7 +31,7 @@ export default function Login() {
       </CardTitle>
       
       <AuthCardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" aria-label="Formulário de login" noValidate>
           <div className="space-y-2">
             <Label htmlFor="email">Usuário</Label>
             <div className="relative">
@@ -47,6 +45,7 @@ export default function Login() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="email"
                 disabled={isLoading}
               />
             </div>
@@ -65,6 +64,7 @@ export default function Login() {
                 className="pl-10"
                 required
                 aria-required="true"
+                autoComplete="current-password"
                 disabled={isLoading}
               />
             </div>
@@ -76,6 +76,7 @@ export default function Login() {
               checked={rememberMe}
               onCheckedChange={(checked) => setRememberMe(checked as boolean)}
               disabled={isLoading}
+              aria-label="Lembrar de mim neste dispositivo"
             />
             <Label
               htmlFor="remember"
@@ -90,14 +91,16 @@ export default function Login() {
             className="w-full bg-primary hover:bg-primary-hover"
             disabled={isLoading}
             aria-live="polite"
+            aria-busy={isLoading}
           >
             {isLoading ? "Entrando..." : "Avançar"}
           </Button>
           
-          <div className="text-center space-y-2">
+          <nav aria-label="Links de navegação do login" className="text-center space-y-2">
             <Link 
               to="/recuperar-senha" 
-              className={`text-sm text-primary hover:text-primary-hover transition-colors ${isLoading ? "pointer-events-none opacity-50" : ""}`}
+              className={`block text-sm text-primary hover:text-primary-hover transition-colors ${isLoading ? "pointer-events-none opacity-50" : ""}`}
+              aria-disabled={isLoading}
             >
               Esqueceu a senha?
             </Link>
@@ -106,11 +109,12 @@ export default function Login() {
               <Link 
                 to="/cadastro" 
                 className={`text-primary hover:text-primary-hover transition-colors ${isLoading ? "pointer-events-none opacity-50" : ""}`}
+                aria-disabled={isLoading}
               >
                 Cadastre-se
               </Link>
             </p>
-          </div>
+          </nav>
         </form>
       </AuthCardContent>
     </AuthCard>

@@ -18,20 +18,18 @@ const ongRaizes: ONG = {
   description: "Desenvolve projetos educacionais sustentáveis com foco na preservação ambiental e educação para a cidadania.",
   tag: "Sustentabilidade",
   image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop",
-  altText: "Pessoas a debater ideias numa mesa de trabalho, representando o planeamento sustentável da ONG" 
+  altText: "Pessoas a debater ideias numa mesa de trabalho, representando o planeamento sustentável da ONG"
 };
 
 export default function OngsParceiras() {
   const navigate = useNavigate();
-  const handleVolunteerClick = () => {
-    navigate("/cadastro");
-  };
 
   return (
     <div className="flex-1 container mx-auto px-4 py-16 focus:outline-none">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">
+
+      <section aria-labelledby="titulo-ongs">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h1 id="titulo-ongs" className="text-4xl font-bold text-primary mb-4">
             Saiba mais sobre nossa ONG parceira
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -41,9 +39,13 @@ export default function OngsParceiras() {
           </p>
         </div>
 
-        <Card className="shadow-card hover:shadow-hover transition-shadow duration-300 max-w-lg mx-auto text-left">
+        <Card
+          className="shadow-card hover:shadow-hover transition-shadow duration-300 max-w-lg mx-auto text-left"
+          tabIndex={0}
+          aria-label={`ONG Raízes — ${ongRaizes.tag}. ${ongRaizes.description}`}
+        >
           <CardHeader className="space-y-4">
-            <Badge className="w-fit bg-accent text-accent-foreground">
+            <Badge className="w-fit bg-accent text-accent-foreground" aria-label={`Categoria: ${ongRaizes.tag}`}>
               {ongRaizes.tag}
             </Badge>
             <img
@@ -63,18 +65,19 @@ export default function OngsParceiras() {
             </p>
 
             <Button
-              onClick={handleVolunteerClick}
+              onClick={() => navigate("/cadastro")}
               className="w-full bg-primary hover:bg-primary-hover"
+              aria-label="Seja um voluntário na ONG Raízes"
             >
               Seja um voluntário
             </Button>
           </CardContent>
         </Card>
-      </div>
+      </section>
 
-      <div className="text-center mt-20">
+      <section aria-labelledby="titulo-contato" className="text-center mt-20">
         <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 id="titulo-contato" className="text-3xl font-bold mb-4">
             Dúvidas sobre o voluntariado?
           </h2>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
@@ -85,6 +88,7 @@ export default function OngsParceiras() {
             href="https://wa.me/5547999999999" 
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Entrar em contato pelo WhatsApp (abre em nova aba)"
           >
             <Button 
               variant="outline" 
@@ -95,7 +99,8 @@ export default function OngsParceiras() {
             </Button>
           </a>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
